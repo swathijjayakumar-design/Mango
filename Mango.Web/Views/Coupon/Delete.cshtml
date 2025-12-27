@@ -1,0 +1,52 @@
+﻿@using Mango.Web.Services.IServices
+
+@model CouponDTO
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border-danger shadow">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0">Delete Coupon</h5>
+                </div>
+
+                <div class="card-body">
+                    <p class="text-danger fw-bold">
+                        Are you sure you want to delete this coupon?
+                    </p>
+
+                    <dl class="row">
+                        <dt class="col-sm-4">Coupon ID</dt>
+                        <dd class="col-sm-8">@Model.CouponID</dd>
+
+                        <dt class="col-sm-4">Description</dt>
+                        <dd class="col-sm-8">@Model.CouponDescription</dd>
+
+                        <dt class="col-sm-4">Amount</dt>
+                        <dd class="col-sm-8">@Model.CouponAmount</dd>
+
+                        <dt class="col-sm-4">Discount</dt>
+                        <dd class="col-sm-8">@Model.DiscAmount</dd>
+                    </dl>
+
+                    <form asp-action="Delete" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" asp-for="CouponID" />
+
+                        <div class="d-flex justify-content-end">
+                            <a asp-action="CouponIndex" class="btn btn-secondary me-2">
+                                Cancel
+                            </a>
+                            <button type="submit" class="btn btn-danger">
+                                Delete
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

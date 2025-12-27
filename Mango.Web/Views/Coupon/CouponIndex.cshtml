@@ -1,0 +1,48 @@
+﻿@using Mango.Web.Services.IServices
+@model IEnumerable<CouponDTO>
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Coupons</h5>
+
+            <!-- Create Button -->
+            <a asp-action="CouponCreate" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Create Coupon
+            </a>
+        </div>
+
+        <div class="card-body">
+            <table class="table table-bordered table-hover text-center align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Coupon ID</th>
+                        <th>Name</th>
+                        <th>Minimum Amount</th>
+                        <th>Discounted Amount</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var coupon in Model)
+                    {
+                        <tr>
+                            <td>@coupon.CouponID</td>
+                            <td>@coupon.CouponDescription</td>
+                            <td>@coupon.CouponAmount</td>
+                            <td>@coupon.DiscAmount</td>
+                            <td>
+                                <form asp-action="Delete" asp-route-id="@coupon.CouponID" method="get">
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        Delete
+                                    </button>
+                                </form>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
